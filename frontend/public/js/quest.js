@@ -10,6 +10,7 @@ import { addCrystals, initCrystalDisplay } from "./hub.js";
 // DOM refs
 const statusEl = document.querySelector("[data-quest-status]");
 const hpFillEl = document.querySelector("[data-enemy-hp-fill]");
+const hpTextEl = document.querySelector("[data-hp-text]");
 const slotsContainer = document.querySelector("[data-word-slots]");
 const keyboardContainer = document.querySelector("[data-keyboard]");
 const btnPlayWord = document.querySelector("[data-btn-play-word]");
@@ -17,6 +18,7 @@ const btnSpellLetters = document.querySelector("[data-btn-spell-letters]");
 const btnClear = document.querySelector("[data-btn-clear]");
 const progressLabel = document.querySelector("[data-progress-label]");
 const feedbackEl = document.querySelector("[data-feedback]");
+const streakEl = document.querySelector("[data-streak-count]");
 
 // State
 let queue = [];
@@ -26,6 +28,8 @@ let typed = [];
 let totalHp = 0;
 let enemyHp = 0;
 let battleDone = false;
+let streak = 0;
+let bestStreak = 0;
 
 // --- Helpers ---
 
