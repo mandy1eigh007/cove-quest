@@ -1,156 +1,194 @@
-# SpellQuest: Cove
-Research-based spelling adventure game built as a web MVP first, then expanded to Roblox.
+# SpellQuest: Cove — North Star (Source of Truth)
 
-This README is the project "North Star." If a feature does not strengthen literacy outcomes *and* the game loop, it does not ship.
+This repo ships a kid-safe, research-aligned spelling game where early readers learn phonics patterns by "casting" words in short battles.
 
----
-
-## 1. North Star
-SpellQuest: Cove is a fantasy spelling/literacy adventure where kids progress across themed worlds by completing short, high-feedback spelling quests, battling "Spelling Bosses," evolving a companion pet, and earning achievements—without requiring strong reading skills to navigate the UI.
-
-Non-negotiable outcome:
-- This must measurably improve encoding/decoding skills through systematic progression and repeated retrieval practice, not "edutainment wallpaper."
+If anything conflicts: this document wins.
 
 ---
 
-## 2. Vision (what the game should feel like)
-- Bright, magical world map with an obvious path, big "quest" nodes, and a looming boss landmark.
-- Boss battles as short, dramatic set-pieces.
-- Pet evolution as the emotional hook.
-- Achievements as constant reinforcement.
+## 1) One-Sentence Pitch
 
-Design translation:
-- Macro loop: Map -> Quest chain -> Boss -> Reward -> Pet evolution/achievements -> Unlock next world.
-- Micro loop: Hear -> Attempt -> Instant feedback -> Fix -> Succeed -> Reward.
+A map-based spelling adventure where kids defeat Glitch Spirits by spelling words aligned to systematic phonics progression, with rewards (pets/achievements) that reinforce short, repeatable practice.
 
 ---
 
-## 3. Learning design (research-based, not vibes)
-The learning model is "systematic progression + retrieval + spacing":
-- Systematic phonics progression (teach patterns explicitly and build complexity).
-- Retrieval practice (being tested by trying to produce the spelling) strengthens long-term retention.
-- Spacing/distributed practice improves durable learning versus massed practice.
+## 2) Non-Negotiables (Product Rules)
 
-What that means in gameplay:
-- One skill focus per session (no mixed chaos until mastery is demonstrated).
-- Immediate corrective feedback, then a second chance quickly.
-- Built-in review scheduling (previous worlds as "echo quests").
-
-Input modes (multi-modal by design):
-- Typed spelling is the baseline (voice may be optional/assistive, but never the only path).
+- No reading required to navigate core flow (audio cues + simple taps).
+- No shame language. Mistakes are neutral and instructional.
+- Sessions are short: 1 battle or a few helper words.
+- Core learning loop must stay stable as UI gets more "game-like".
+- Phase 1 web build should avoid collecting child personal data.
 
 ---
 
-## 4. Story and world bible
-Core premise:
-Words are magic in Cove. A "glitch" corrupts spelling patterns across the realm. Kids restore order by clearing quests, defeating glitch bosses, and evolving their companion.
+## 3) Learning Design (Evidence-Aligned)
 
-World map and progression (locked):
-1. **Echo Harbor** (CVC / short vowels) — Boss: Glitchling Prime
-2. **Prism Peaks** (Blends) — Boss: Snarejaw
-3. **Byte Hollow** (Digraphs) — Boss: Static Moth
-4. **Luma Citadel** (Long vowels / CVCe) — Boss: Mirage Lord
-5. **The Great Unravel** (Prefix/suffix) — Boss: The Unraveler
+We align gameplay to:
+- Systematic phonics progression (pattern-based decoding/spelling).
+- Lots of short practice with immediate feedback.
+- Retrieval practice: the kid must produce the spelling, not just recognize it.
 
-Helper NPCs (world guides):
-- Captain Echo, Prism, Archivist
+References (for team alignment):
+- National Reading Panel — phonics report (systematic phonics effectiveness).
+- IES/WWC Practice Guide — Foundational Skills K–3.
+- Retrieval practice ("testing effect") literature (Roediger & Karpicke).
 
-Narrative arc:
-- Act 1: The glitches slip in, small corruptions appear (Echo Harbor).
-- Act 2: The corruption spreads and mutates; rules get tricky.
-- Act 3: The source is revealed: the Unraveler is scrambling word structure itself.
-- Finale: The pet's final evolution is tied to mastery, not grinding.
+(Do not add claims beyond these without a citation.)
 
 ---
 
-## 5. Game modes
-- Hub (map, profile, progress, pet, achievements)
-- Quest Mode (main spelling loop + battles)
-- Spell Helper (controlled scope, assistive)
+## 4) World Bible (5 Worlds)
 
-MVP = Hub + Quest Mode + Pet Evolution + Achievements fully integrated.
+Worlds are phonics tiers. Each world has 21 levels; Level 21 is a boss.
 
----
+NOTE: World 1 naming mismatch exists in older docs:
+- "Echo Harbor" (current UI label) and "City of Echoes" (older doc label).
+We treat Echo Harbor as the playable district inside the City of Echoes until renamed.
 
-## 6. Safety, privacy, and compliance (non-negotiable)
-- Minimize data collection; avoid collecting unnecessary personal info.
-- Default to parent/guardian gate for account actions that touch identity, sharing, or payments.
-- The child experience must work without exposing chat, open messaging, or public posting.
+World 1: Echo Harbor (City of Echoes)
+- Skill: Short Vowel CVC
+- Boss (Level 21): Syllabyte Prime (Glitchling Prime — Echo form)
 
----
+World 2: Blend Bay
+- Skill: Initial/Final Blends
+- Boss: Blend Kraken
 
-## 7. Platforms and build strategy
-- Web MVP proves the learning loop, pacing, and progression.
-- Roblox version adapts the same loop into a 3D social platform without compromising outcomes.
+World 3: Digraph Dunes
+- Skill: Digraphs (sh/ch/th/wh/ph)
+- Boss: Chomp Wyrm
 
----
+World 4: Lantern Isles
+- Skill: Long vowels (VCe + vowel teams)
+- Boss: Prism Wraith
 
-## 8. Product rules (to prevent scope drift)
-1. If it does not reinforce a specific spelling pattern, it is decoration.
-2. No long instructions. The game teaches by doing.
-3. Rewards are tied to mastery signals, not time spent.
-4. Progression must be explainable to a parent/teacher in 60 seconds.
-5. Every new feature must answer: "What skill does this practice, and how do we measure it?"
-
----
-
-## 9. Definition of "not flat anymore"
-When these are true, the game has evolved:
-- Hub looks like a real map quest experience (path, nodes, boss silhouette, clear next action).
-- Quest Mode is punchy: attempt -> feedback -> success -> spell cast -> reward.
-- Pet evolution is visible and meaningfully tied to progression.
-- Achievements fire frequently early (reinforcement), then become harder (mastery).
-- A kid can navigate without reading-heavy menus.
+World 5: Noise Core
+- Skill: Multisyllable + morphology (prefix/suffix roots)
+- Boss: Glitchling Prime (true)
 
 ---
 
-## 10. What to build next (order matters)
-1. World Map Hub (Echo Harbor only) with quest nodes + boss gate.
-2. One complete Quest loop (10–15 words) with instant feedback and a "boss" at the end.
-3. Pet evolution v1 (one evolution step) triggered by boss completion.
-4. Achievements v1 (streak, first-try correct, boss clear).
-5. Test with real kids before adding new systems.
+## 5) Characters (Anchor Cast)
+
+Hero
+- Lyric (player hero / avatar)
+
+Core cast (future-facing but canonical)
+- Chord (sound blends mentor energy)
+- Melody (vowel mentor energy)
+
+Enemies
+- Glitch Spirits (enemy type label used in battle UI)
+- Enemy variants can be data-driven (enemies.json) to add variety without changing learning logic.
+
+Pets / Sidekicks
+- Phase 1.5+: pets exist visually and evolve using crystals.
+- Phase 1 MVP: pet slot is "locked" but UI slot remains consistent across screens.
 
 ---
 
-## Current Implementation Status
+## 6) Core Game Loop (Phase 1 MVP)
 
-### Phase 1 (Bootstrap MVP) — Complete
-- Hub page with avatar, pet slot, crystal counter, navigation
-- Quest Battle with 20 CVC words, QWERTY keyboard, HP bar, streak counter
-- Spell Helper with word input, letter chip breakdown, TTS
-- Web Speech API helpers, localStorage crystal counter
+Map/Hub
+- Pick mode: Quest Mode or Spell Helper
+- Show hero panel + crystals counter
 
-### Phase 1.1 (2.5D Gamer Layer) — Complete
-- World Map (map.html) with 21 nodes in winding S-curve path
-- Level progression: locked/available/completed states
-- Level-mode quest: 1 word per normal level, 5 words for boss
-- Deterministic enemy per level from enemies.json with HP scaling
-- Battle VFX: hit shake + particle burst, red flash + slot shake
-- Pet evolution: locked -> egg (25 crystals) -> hatched "Pebble" (75 crystals)
-- Map as main entry point
+Quest Mode (battle)
+- Present word (audio)
+- Kid spells (tap letters / type as supported)
+- Correct: enemy HP decreases + streak increments
+- Incorrect: streak resets, feedback plays, retry or next (depending on setting)
+- Victory: show crystals earned + best streak
 
-### File Structure
-```
-/app/frontend/public/
-  hub.html              Hub / menu
-  map.html              World Map (main entry)
-  quest.html            Quest battle screen
-  spellhelper.html      Spell Helper
-  styles.css            Shared styles
-  js/
-    speechHelpers.js    Web Speech API wrapper
-    data_w1_words.js    20 CVC words
-    hub.js              Crystal counter + pet evolution
-    quest.js            Quest battle logic
-    spellhelper.js      Spell Helper logic
-    map.js              World Map logic
-  data/
-    enemies.json        5 World 1 enemies
-    worlds.json         World 1 definition
-    avatars.json        3 avatar options
-    pets.json           5 pet definitions
-/docs/
-  PHASE_1_BOOTSTRAP_MVP.md
-  ECOSYSTEM_VISION.md
-```
+Spell Helper
+- Adult types a word; app breaks into letter chips and speaks slowly.
+- Kid taps chips to rehear.
+
+---
+
+## 7) "Evolve the Flat Game" (Presentation Roadmap)
+
+We are upgrading the presentation without destabilizing the learning engine.
+
+Phase 1 (done): Stable learning loop + clean HUD
+- Hub -> Quest -> Victory
+- Streak + best streak
+- Hero panel + HP bar + enemy label
+
+Phase 1.5 (next): Gamer wrapper (no new pedagogy)
+- Map Quest screen (level path + boss node)
+- Enemy variety wired from enemies.json (cosmetic variety, same difficulty rules)
+- Pet Evolution screen (crystals -> pet stage)
+- Achievements v1 (early frequent, later harder)
+
+Phase 2: "2.5D diorama" battles
+- Background parallax + character silhouettes + simple VFX set pieces
+- Boss intro sting (2-3 seconds) at Level 21
+
+Phase 3: Full 3D (only after kid testing validates usability)
+- 3D map + 3D arena
+- Characters + pets animated
+
+---
+
+## 8) Safety / Privacy (Hard Requirements)
+
+Web MVP:
+- Avoid collecting child personal info.
+- No ads, no external links, no chat.
+- If accounts ever exist: parent-gated and minimal data, with clear consent flows.
+
+Roblox version:
+- Assume under-13 safety defaults (restricted communication).
+- No reliance on chat for gameplay.
+- No off-platform links or data capture.
+
+---
+
+## 9) Tech Direction (Open-Source Friendly)
+
+We prefer open-source engines/libraries for the presentation layer:
+- 2D/2.5D: Phaser (MIT) or similar.
+- 3D (later): Three.js/Babylon.js (license check before committing).
+
+Learning engine should remain platform-agnostic:
+- Word banks and enemy definitions in JSON.
+- Deterministic difficulty rules in plain JS so they can be ported to Roblox Lua.
+
+---
+
+## 10) Current Status (Manual Smoke Checks)
+
+- Hub loads with hero panel and pet slot
+- Quest battle runs end-to-end without breaking loop
+- Streak increments/resets correctly; best streak appears on victory
+- Crystals display persists across key screens
+- Spell Helper runs and speaks/breaks letters
+
+---
+
+## 11) Next Build Tasks (Highest ROI)
+
+1) Achievements v1:
+   - Streak badge
+   - First-try-correct badge
+   - Boss clear badge
+
+2) Boss treatment:
+   - Level 21 intro sting (screen darken + glitch VFX + name reveal)
+
+3) Enemy variety:
+   - Wire enemies.json so each battle picks a different Glitch Spirit variant
+
+4) Kid usability testing (ages 4-7):
+   - Observe: can they start a battle, understand "spell to hit", recover from mistakes
+
+5) PWA:
+   - Manifest + service worker for offline install (after testing)
+
+---
+
+## 12) "Do Not Delete" (Intentional Parking Lot)
+
+Anything cut should be moved here with ~~strikethrough~~ and a short reason.
+We do not erase history; we annotate it.
