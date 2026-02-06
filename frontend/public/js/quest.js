@@ -46,6 +46,14 @@ function updateHpBar() {
   if (!hpFillEl) return;
   const pct = totalHp > 0 ? Math.max(0, (enemyHp / totalHp) * 100) : 0;
   hpFillEl.style.width = pct + "%";
+  if (hpTextEl) hpTextEl.textContent = "HP " + enemyHp + " / " + totalHp;
+}
+
+function updateStreakDisplay() {
+  if (!streakEl) return;
+  streakEl.textContent = String(streak);
+  streakEl.classList.add("streak-bump");
+  setTimeout(() => streakEl.classList.remove("streak-bump"), 150);
 }
 
 function setFeedback(text, type) {
