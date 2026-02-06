@@ -120,7 +120,7 @@ function checkAnswer() {
   const target = currentWord.toLowerCase();
 
   if (guess === target) {
-    enemyHp -= 1;
+    enemyHp -= damagePerWord;
     updateHpBar();
     streak += 1;
     bestStreak = Math.max(bestStreak, streak);
