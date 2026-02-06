@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SpellQuest: Cove — Spell Helper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./js/spellhelper.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="app-title-block">
+          <div class="app-title">Spell Helper</div>
+          <div class="app-subtitle">
+            "How do you spell...?" with slow audio and letter chips.
+          </div>
+        </div>
+        <div class="app-crystals" data-testid="crystal-display">
+          <div class="app-crystals-label">Crystals</div>
+          <div class="app-crystals-value" data-crystal-count data-testid="crystal-count">0</div>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Spell a Word</div>
+              <div class="card-subtitle">
+                Type a word. Later we can add voice input; for now we keep it stable.
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="spellhelper-input-row">
+              <input
+                type="text"
+                class="spellhelper-input"
+                placeholder="Type a word (cat, sunset, rocket)"
+                autocomplete="off"
+                data-word-input
+                data-testid="word-input"
+              />
+              <button class="btn btn-sm btn-primary" type="button" data-btn-show data-testid="show-speak-btn">
+                Show &amp; speak
+              </button>
+            </div>
+            <p class="text-muted">
+              This is meant to be used with an adult nearby at first: they type,
+              the child listens and taps.
+            </p>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Breakdown</div>
+              <div class="card-subtitle">
+                Tap any letter chip to hear it again.
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div data-word-display data-testid="word-display" style="font-size: 1.4rem; font-weight: 600; letter-spacing: 0.12em;">&mdash;</div>
+            <h4 style="margin: 8px 0 4px; font-size: 0.85rem; color: var(--muted);">Letters</h4>
+            <div class="chip-row" data-letter-row data-testid="letter-row"></div>
+          </div>
+          <div class="card-body">
+            <button
+              class="btn btn-sm"
+              type="button"
+              data-testid="back-to-hub-btn"
+              onclick="window.location.href='./hub.html'"
+            >
+              Back to hub
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
