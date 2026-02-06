@@ -1,11 +1,11 @@
 # SpellQuest: Cove — PRD
 
 ## Original Problem Statement
-Build Phase 1 Bootstrap MVP for SpellQuest: Cove as pure HTML/JS/CSS. Create project docs, implement a hub page, quest battle loop (20 CVC words), spell helper tool, Web Speech API TTS, and localStorage crystal counter. No React, no bundler, no server dependencies.
+Build Phase 1 Bootstrap MVP for SpellQuest: Cove. Game pages are vanilla HTML/CSS/JS static files served from the React dev server's `public/` directory. The React app (`/app/frontend/src/App.js`) was modified to redirect `/` to `/hub.html`. No bundler or build step is used for the game files themselves.
 
 ## Architecture
-- **Stack:** Vanilla HTML5 + CSS3 + ES Module JavaScript
-- **Serving:** Static files in `/app/frontend/public/` served via React dev server (port 3000)
+- **Stack:** Vanilla HTML5 + CSS3 + ES Module JavaScript (game pages). React dev server used only as static file host + redirect.
+- **Serving:** Static files in `/app/frontend/public/` served via React dev server (port 3000). `/app/frontend/src/App.js` redirects root `/` to `/hub.html`.
 - **Persistence:** localStorage only (key: `spellquest_cove_crystals`)
 - **Audio:** Web Speech API (browser TTS, en-US preferred)
 - **No backend dependencies** for game logic
