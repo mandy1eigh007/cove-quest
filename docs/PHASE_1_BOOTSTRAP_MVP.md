@@ -10,7 +10,9 @@ SpellQuest: Cove Phase 1 is a minimal, playable prototype of the CVC spelling qu
 It targets early readers (ages 4–7) practicing short-vowel CVC words through a simple
 battle mechanic and a standalone Spell Helper tool.
 
-**Stack:** Plain HTML + CSS + vanilla JavaScript. No bundler, no React, no build step.
+**Stack:** Vanilla HTML + CSS + ES-module JavaScript, served as static files from
+the React dev server's `public/` directory. React's `App.js` was modified solely to
+redirect `/` to `/hub.html`. No bundler or build step is used for the game files.
 Audio via the browser Web Speech API. Persistence via localStorage only.
 
 ---
