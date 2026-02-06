@@ -1,0 +1,58 @@
+# SpellQuest: Cove — PRD
+
+## Original Problem Statement
+Build Phase 1 Bootstrap MVP for SpellQuest: Cove as pure HTML/JS/CSS. Create project docs, implement a hub page, quest battle loop (20 CVC words), spell helper tool, Web Speech API TTS, and localStorage crystal counter. No React, no bundler, no server dependencies.
+
+## Architecture
+- **Stack:** Vanilla HTML5 + CSS3 + ES Module JavaScript
+- **Serving:** Static files in `/app/frontend/public/` served via React dev server (port 3000)
+- **Persistence:** localStorage only (key: `spellquest_cove_crystals`)
+- **Audio:** Web Speech API (browser TTS, en-US preferred)
+- **No backend dependencies** for game logic
+
+## User Personas
+1. **Early readers (ages 4–7):** Primary users. Large touch targets, no reading required for navigation, audio support.
+2. **Parents/teachers:** Secondary users. "For Adults" section explains what the MVP trains. They may type words in Spell Helper.
+
+## Core Requirements (Static)
+- 1 world: short-vowel CVC words only
+- 20 CVC words from existing word bank
+- Quest battle loop: spell words to damage enemy, earn crystals
+- Spell Helper: type a word, see letter breakdown, hear it spoken
+- Crystal counter persists via localStorage
+- Graceful TTS fallback if Web Speech API unavailable
+- No ads, no accounts, no loot boxes
+
+## What's Been Implemented (Jan 2026)
+- [x] Project docs: `/docs/PHASE_1_BOOTSTRAP_MVP.md`, `/docs/ECOSYSTEM_VISION.md`, `/.github/copilot-instructions.md`
+- [x] Hub page (`/hub.html`) — title, crystal counter, Quest + Spell Helper navigation
+- [x] Quest Battle (`/quest.html`) — 20 shuffled CVC words, QWERTY keyboard, HP bar, slots, feedback, victory screen
+- [x] Spell Helper (`/spellhelper.html`) — word input, letter chip breakdown, TTS integration
+- [x] `js/speechHelpers.js` — speakWord, speakLettersSlow, speakPhrase (Web Speech API)
+- [x] `js/data_w1_words.js` — 20 CVC words across all 5 short vowels
+- [x] `js/hub.js` — localStorage crystal counter shared across pages
+- [x] `styles.css` — dark theme, kid-friendly large targets, responsive
+- [x] React App.js redirects `/` to `/hub.html`
+- [x] All tests passing (navigation, game loop, crystal persistence, spell helper)
+
+## Prioritized Backlog
+
+### P0 (Critical for Phase 1 completion)
+- Kid usability testing (weeks 5–8)
+- Touch target sizing validation on real mobile devices
+
+### P1 (Important)
+- PWA manifest + service worker for offline play
+- Sound effects for correct/incorrect answers (beyond TTS)
+- Visual animations for HP damage and crystal rewards
+
+### P2 (Nice to have)
+- Simplified keyboard layout option for younger kids
+- Word difficulty tracking (which words are most often misspelled)
+- Session stats (words correct, time taken)
+
+## Next Tasks
+1. Test with real children (ages 4–7) for usability feedback
+2. Add PWA install flow when ready
+3. Consider adding visual reward animations for correct spellings
+4. Plan World 2 (long-vowel CVCe words) based on Phase 1 learnings
