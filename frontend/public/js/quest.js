@@ -375,7 +375,25 @@ async function startBattle() {
 
 document.addEventListener("DOMContentLoaded", () => {
   initCrystalDisplay();
+  renderPetSlot();
   buildKeyboard();
   attachControlHandlers();
+
+  // Level mode UI tweaks
+  if (isLevelMode) {
+    const titleEl = document.querySelector(".app-title");
+    if (titleEl) titleEl.textContent = isBossLevel ? "Boss Battle" : "Level " + selectedLevel;
+
+    const backBtn = document.querySelector("[data-testid='back-to-hub-btn']");
+    if (backBtn) {
+      backBtn.textContent = "Back to map";
+      backBtn.setAttribute("onclick", "");
+      backBtn.addEventListener("click", () => {
+        localStorage.removeItem("w1_selected_level");
+        window.location.href = "./map.html";
+      });
+    }
+  }
+
   startBattle();
 });
