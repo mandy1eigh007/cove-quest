@@ -25,15 +25,23 @@ Build Phase 1 Bootstrap MVP for SpellQuest: Cove. Game pages are vanilla HTML/CS
 
 ## What's Been Implemented (Jan 2026)
 - [x] Project docs: `/docs/PHASE_1_BOOTSTRAP_MVP.md`, `/docs/ECOSYSTEM_VISION.md`, `/.github/copilot-instructions.md`
-- [x] Hub page (`/hub.html`) — title, crystal counter, Quest + Spell Helper navigation
-- [x] Quest Battle (`/quest.html`) — 20 shuffled CVC words, QWERTY keyboard, HP bar, slots, feedback, victory screen
+- [x] Hub page (`/hub.html`) — title, crystal counter, avatar silhouette + pet slot, Quest + Spell Helper navigation
+- [x] Quest Battle (`/quest.html`) — 20 shuffled CVC words, QWERTY keyboard, neon HP bar, hero panel (avatar "Lyric", pet slot placeholder), streak counter, slots, feedback, victory screen with best streak
 - [x] Spell Helper (`/spellhelper.html`) — word input, letter chip breakdown, TTS integration
 - [x] `js/speechHelpers.js` — speakWord, speakLettersSlow, speakPhrase (Web Speech API)
 - [x] `js/data_w1_words.js` — 20 CVC words across all 5 short vowels
 - [x] `js/hub.js` — localStorage crystal counter shared across pages
-- [x] `styles.css` — dark theme, kid-friendly large targets, responsive
-- [x] React App.js redirects `/` to `/hub.html`
-- [x] All tests passing (navigation, game loop, crystal persistence, spell helper)
+- [x] `styles.css` — dark theme, neon HUD, hero panel, kid-friendly large targets, responsive
+- [x] Data stubs: `/data/worlds.json`, `/data/enemies.json`, `/data/avatars.json`, `/data/pets.json`
+- [x] React `App.js` redirects `/` to `/hub.html` (only React file modified)
+- Manual smoke-check completed:
+  - Hub loads with crystal counter, avatar, pet slot, and both navigation buttons
+  - Quest page renders enemy HP bar, letter slots, QWERTY keyboard, hero panel with streak
+  - Spell Helper shows input, breakdown area, letter chips
+  - Navigation between all three pages works
+  - Crystal counter persists across pages via localStorage
+  - Correct/incorrect spelling feedback triggers properly
+  - No JavaScript console errors on any page
 
 ## Prioritized Backlog
 
