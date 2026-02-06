@@ -230,6 +230,9 @@ function startBattle() {
   currentWord = "";
   typed = [];
   battleDone = false;
+  streak = 0;
+  bestStreak = 0;
+  updateStreakDisplay();
   updateHpBar();
   nextWord();
 }
