@@ -1,0 +1,42 @@
+[
+  {
+    "id": "e1_static_wisp",
+    "name": "Static Wisp",
+    "type": "Glitch Spirit",
+    "world": "w1",
+    "baseHP": 20,
+    "description": "A flickering fragment of corrupted sound."
+  },
+  {
+    "id": "e1_echo_glitch",
+    "name": "Echo Glitch",
+    "type": "Glitch Spirit",
+    "world": "w1",
+    "baseHP": 20,
+    "description": "Repeats your mistakes back at you in a distorted loop."
+  },
+  {
+    "id": "e1_vowel_shade",
+    "name": "Vowel Shade",
+    "type": "Glitch Spirit",
+    "world": "w1",
+    "baseHP": 20,
+    "description": "Eats vowels and leaves only consonant husks behind."
+  },
+  {
+    "id": "e1_scramble_imp",
+    "name": "Scramble Imp",
+    "type": "Glitch Spirit",
+    "world": "w1",
+    "baseHP": 20,
+    "description": "Rearranges letters when you're not looking."
+  },
+  {
+    "id": "e1_hush_wraith",
+    "name": "Hush Wraith",
+    "type": "Glitch Spirit",
+    "world": "w1",
+    "baseHP": 20,
+    "description": "Silences the voice that reads words aloud."
+  }
+]
