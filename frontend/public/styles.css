@@ -266,23 +266,6 @@ body {
   font-weight: 600;
 }
 
-.quest-enemy-hp-bar {
-  width: 100%;
-  height: 10px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  overflow: hidden;
-}
-
-.quest-enemy-hp-fill {
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(90deg, #f97373, #fb7185);
-  width: 100%;
-  transition: width 0.2s ease-out;
-}
-
 .quest-status {
   font-size: 0.85rem;
   color: var(--muted);
