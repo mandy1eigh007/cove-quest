@@ -1,87 +1,66 @@
 # SpellQuest: Cove — PRD
 
-## Original Problem Statement
-Build Phase 1 Bootstrap MVP for SpellQuest: Cove, then evolve to Phase 1.1 "2.5D Gamer Layer" with world map, level-based progression, enemy variety, battle VFX, and pet evolution. Game pages are vanilla HTML/CSS/JS static files served from the React dev server's `public/` directory. React `App.js` redirects `/` to `/map.html`.
+## North Star (from README)
+SpellQuest: Cove is a fantasy spelling/literacy adventure where kids progress across themed worlds by completing short, high-feedback spelling quests, battling "Spelling Bosses," evolving a companion pet, and earning achievements—without requiring strong reading skills to navigate the UI. Must measurably improve encoding/decoding skills through systematic progression and repeated retrieval practice.
 
 ## Architecture
 - **Stack:** Vanilla HTML5 + CSS3 + ES Module JavaScript. React dev server as static file host only.
-- **Serving:** Static files in `/app/frontend/public/` on port 3000. `App.js` redirects root `/` to `/map.html`.
-- **Persistence:** localStorage only (keys: `spellquest_cove_crystals`, `spellquest_pet_stage`, `w1_unlocked_level`, `w1_completed_levels`, `w1_selected_level`)
-- **Audio:** Web Speech API (browser TTS, en-US preferred, graceful fallback)
+- **Serving:** Static files in `/app/frontend/public/` on port 3000. Root `/` redirects instantly to `/map.html` via meta refresh + inline script.
+- **Persistence:** localStorage (crystals, pet stage, level progression)
+- **Audio:** Web Speech API (browser TTS, en-US preferred)
 - **Data:** Static JSON stubs in `/data/` (enemies, worlds, avatars, pets)
-- **No backend dependencies** for game logic
 
 ## User Personas
-1. **Early readers (ages 4-7):** Primary users. Large touch targets, no reading required for navigation, audio support.
-2. **Parents/teachers:** Secondary users. "For Adults" section explains what the MVP trains.
+1. **Early readers (ages 4-7):** Primary. Large touch targets, icon-first navigation, TTS support.
+2. **Parents/teachers:** Secondary. "For Adults" section, 60-second explainable progression.
 
-## Core Requirements (Static)
-- 1 world: short-vowel CVC words only (Echo Harbor)
-- 20 CVC words from existing word bank
-- Map-based level progression (20 levels + 1 boss)
-- Quest battle loop: spell word to defeat enemy, earn crystals
-- Spell Helper: type a word, see letter breakdown, hear it spoken
-- Crystal counter persists via localStorage
-- Pet evolution: locked -> egg (25 crystals) -> hatched "Pebble" (75 crystals)
-- No ads, no accounts, no loot boxes
+## Learning Design
+- Systematic phonics progression (one skill focus per session)
+- Retrieval practice (attempt → feedback → fix → succeed)
+- Spacing/distributed practice (review scheduling planned)
+- Multi-modal input (typed baseline, voice optional future)
 
-## What's Been Implemented (Jan 2026)
+## Implemented
 
 ### Phase 1 (Bootstrap MVP)
-- [x] Hub page with avatar, pet slot, crystal counter, navigation
-- [x] Quest Battle with 20 shuffled CVC words, QWERTY keyboard, HP bar, streak counter
-- [x] Spell Helper with word input, letter chip breakdown, TTS
-- [x] Web Speech API helpers (speakWord, speakLettersSlow, speakPhrase)
-- [x] localStorage crystal counter shared across pages
-- [x] Data stubs: worlds.json, enemies.json (5 enemies), avatars.json (3), pets.json (5)
-- [x] Project docs: PHASE_1_BOOTSTRAP_MVP.md, ECOSYSTEM_VISION.md, copilot-instructions.md
+- [x] Hub page: avatar "Lyric", pet slot, crystal counter, navigation
+- [x] Quest Battle: 20 CVC words, QWERTY keyboard, HP bar, streak counter, victory screen
+- [x] Spell Helper: word input, letter chip breakdown, TTS
+- [x] speechHelpers.js (speakWord, speakLettersSlow, speakPhrase)
+- [x] localStorage crystal counter, data stubs (enemies, worlds, avatars, pets)
+- [x] Project docs (PHASE_1_BOOTSTRAP_MVP.md, ECOSYSTEM_VISION.md, copilot-instructions.md)
 
 ### Phase 1.1 (2.5D Gamer Layer)
-- [x] World Map screen (map.html) with 21 nodes in winding S-curve path
-- [x] Level progression: locked/available/completed states, localStorage persistence
-- [x] Level-mode quest: 1 word per normal level, 5 words for boss level
+- [x] World Map (map.html): 21 nodes winding S-curve, level progression
+- [x] Level-mode quest: 1 word/level, 5 words for boss, HP scaling
 - [x] Deterministic enemy per level from enemies.json (4 levels per enemy)
-- [x] HP scaling: hp = baseHP + (level-1) * 2
-- [x] Battle VFX: enemy hit shake + particle burst (correct), red flash + slot shake (incorrect)
-- [x] Pet evolution system: locked (0), egg (25+ crystals), hatched Pebble (75+)
-- [x] Consistent hero/pet display across hub, map, and quest pages
-- [x] Map as main entry point (/ redirects to /map.html)
-- [x] Level completion flow: victory → localStorage update → map progression
+- [x] Battle VFX: hit shake + particles (correct), red flash + slot shake (incorrect)
+- [x] Pet evolution: locked → egg (25 crystals) → hatched "Pebble" (75 crystals)
+- [x] Consistent hero/pet across hub, map, quest
+- [x] Instant root redirect, README aligned with North Star
 
-### Manual Smoke-Check
-- Map loads with 21 nodes, correct progression states
-- Level 1 quest: "Static Wisp", HP 20/20, word "cat", 1 word
-- Level 5 quest: "Echo Glitch", HP 28/28 (scaled), different word
-- Level completion updates map: checkmark on completed, next level available
-- Boss node (21) unlocks after level 20
-- VFX trigger correctly on correct/incorrect
-- Pet slot renders correctly per crystal threshold
-- Crystal persistence across hub/map/quest/spellhelper
-- Hub Quest Mode routes to map
-- Spell helper fully functional
-- No JavaScript console errors on any page
+## Backlog (from README §10–11)
 
-## Prioritized Backlog
-
-### P0
-- Kid usability testing with real children (ages 4-7)
-- Touch target sizing validation on real mobile devices
+### P0 — Next Build
+- [ ] Achievements v1 (streak, first-try correct, boss clear)
+- [ ] Boss battle special treatment (Glitchling Prime, unique visuals)
+- [ ] Real kid testing (ages 4-7)
 
 ### P1
-- PWA manifest + service worker for offline play
-- Sound effects (beyond TTS) for correct/incorrect
-- Boss battle with unique visual treatment
-- Avatar selection (Lyric/Chord/Melody from avatars.json)
+- [ ] PWA manifest + service worker (offline)
+- [ ] Avatar selection (Lyric/Chord/Melody)
+- [ ] Wire pets.json unlock conditions
+- [ ] Review scheduling ("echo quests" for previous words)
 
-### P2
-- Wire pets.json unlock conditions into real gameplay
-- Word difficulty tracking
-- Session stats display
-- Simplified keyboard layout option
+### P2 — Future Worlds
+- [ ] World 2: Prism Peaks (Blends) — Boss: Snarejaw
+- [ ] World 3: Byte Hollow (Digraphs) — Boss: Static Moth
+- [ ] Helper NPCs (Captain Echo)
+- [ ] Roblox adaptation
 
-## Next Tasks
-1. Test with real kids for usability feedback
-2. Add PWA install flow
-3. Build avatar selection screen
-4. Add boss battle unique visuals/dialogue
-5. Plan World 2 (long-vowel CVCe)
+## Product Rules
+1. If it doesn't reinforce a spelling pattern, it's decoration.
+2. No long instructions. Game teaches by doing.
+3. Rewards tied to mastery signals, not time spent.
+4. Progression explainable to a parent in 60 seconds.
+5. Every feature must answer: "What skill does this practice?"
