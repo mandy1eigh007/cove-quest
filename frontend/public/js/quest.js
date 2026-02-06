@@ -69,7 +69,7 @@ function updateHpBar() {
   if (!hpFillEl) return;
   const pct = totalHp > 0 ? Math.max(0, (enemyHp / totalHp) * 100) : 0;
   hpFillEl.style.width = pct + "%";
-  if (hpTextEl) hpTextEl.textContent = "HP " + enemyHp + " / " + totalHp;
+  if (hpTextEl) hpTextEl.textContent = "HP " + Math.ceil(enemyHp) + " / " + totalHp;
 }
 
 function updateStreakDisplay() {
