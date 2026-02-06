@@ -330,18 +330,38 @@ function attachControlHandlers() {
 
 async function startBattle() {
   const enemies = await loadEnemies();
-  const enemy = pickRandom(enemies);
+  const HP_GROWTH = 2;
 
-  // Update enemy UI
+  let enemy;
+  if (isLevelMode && !isBossLevel) {
+    const enemyIdx = Math.floor((selectedLevel - 1) / 4) % enemies.length;
+    enemy = enemies[enemyIdx];
+  } else {
+    enemy = pickRandom(enemies);
+  }
+
   if (enemyNameEl) enemyNameEl.textContent = enemy.name || "Echo Glitch";
   if (enemyTypeEl) enemyTypeEl.textContent = enemy.type || "Glitch Spirit";
 
   const baseHP = Number(enemy.baseHP) || 20;
 
-  queue = shuffle(W1_WORDS);
-  totalHp = baseHP;
-  enemyHp = baseHP;
-  damagePerWord = baseHP / queue.length;
+  if (isLevelMode && !isBossLevel) {
+    // Single word per level
+    const wordIdx = (selectedLevel - 1) % W1_WORDS.length;
+    queue = [W1_WORDS[wordIdx]];
+    totalHp = baseHP + (selectedLevel - 1) * HP_GROWTH;
+  } else if (isBossLevel) {
+    // Boss: 5 random words
+    queue = shuffle(W1_WORDS).slice(0, 5);
+    totalHp = 100;
+  } else {
+    // Legacy full quest
+    queue = shuffle(W1_WORDS);
+    totalHp = baseHP;
+  }
+
+  enemyHp = totalHp;
+  damagePerWord = totalHp / queue.length;
   currentIndex = 0;
   currentWord = "";
   typed = [];
