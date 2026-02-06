@@ -174,17 +174,20 @@ function checkAnswer() {
 
   if (guess === target) {
     enemyHp -= damagePerWord;
+    if (enemyHp < 0) enemyHp = 0;
     updateHpBar();
     streak += 1;
     bestStreak = Math.max(bestStreak, streak);
     updateStreakDisplay();
     addCrystals(1);
     initCrystalDisplay();
+    triggerHitVFX();
     setFeedback("Nice. That hit the glitch.", "success");
     setTimeout(nextWord, 600);
   } else {
     streak = 0;
     updateStreakDisplay();
+    triggerShakeVFX();
     setFeedback("Not quite. Try that word again.", "error");
     typed = [];
     renderSlots();
