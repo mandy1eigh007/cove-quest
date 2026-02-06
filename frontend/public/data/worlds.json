@@ -1,0 +1,11 @@
+[
+  {
+    "id": "w1",
+    "name": "Echo Harbor",
+    "subtitle": "City of Echoes",
+    "skillFocus": "CVC / short vowels",
+    "description": "Where sounds bounce off ancient walls and glitch spirits feed on misspelled words.",
+    "wordCount": 20,
+    "unlockCondition": "Available from start"
+  }
+]
