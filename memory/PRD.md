@@ -26,7 +26,7 @@ Build Phase 1 Bootstrap MVP for SpellQuest: Cove. Game pages are vanilla HTML/CS
 ## What's Been Implemented (Jan 2026)
 - [x] Project docs: `/docs/PHASE_1_BOOTSTRAP_MVP.md`, `/docs/ECOSYSTEM_VISION.md`, `/.github/copilot-instructions.md`
 - [x] Hub page (`/hub.html`) — title, crystal counter, avatar silhouette + pet slot, Quest + Spell Helper navigation
-- [x] Quest Battle (`/quest.html`) — 20 shuffled CVC words, QWERTY keyboard, neon HP bar, hero panel (avatar "Lyric", pet slot placeholder), streak counter, slots, feedback, victory screen with best streak
+- [x] Quest Battle (`/quest.html`) — 20 shuffled CVC words, QWERTY keyboard, neon HP bar, hero panel (avatar "Lyric", pet slot placeholder), streak counter, random enemy from `data/enemies.json` (Static Wisp, Echo Glitch, Vowel Shade, Scramble Imp, Hush Wraith), slots, feedback, victory screen with best streak
 - [x] Spell Helper (`/spellhelper.html`) — word input, letter chip breakdown, TTS integration
 - [x] `js/speechHelpers.js` — speakWord, speakLettersSlow, speakPhrase (Web Speech API)
 - [x] `js/data_w1_words.js` — 20 CVC words across all 5 short vowels
