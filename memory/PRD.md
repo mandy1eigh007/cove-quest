@@ -35,13 +35,18 @@ Build Phase 1 Bootstrap MVP for SpellQuest: Cove. Game pages are vanilla HTML/CS
 - [x] Data stubs: `/data/worlds.json`, `/data/enemies.json`, `/data/avatars.json`, `/data/pets.json`
 - [x] React `App.js` redirects `/` to `/hub.html` (only React file modified)
 - Manual smoke-check completed:
-  - Hub loads with crystal counter, avatar, pet slot, and both navigation buttons
-  - Quest page renders enemy HP bar, letter slots, QWERTY keyboard, hero panel with streak
+  - Hub loads with crystal counter, avatar "Lyric", pet slot, and both navigation buttons
+  - Quest page loads random enemy from `data/enemies.json` (confirmed: Static Wisp, Echo Glitch, Vowel Shade, Scramble Imp, Hush Wraith all appear across refreshes)
+  - Enemy name, type ("Glitch Spirit"), and HP (20/20) display correctly
+  - HP bar uses `damagePerWord = baseHP / wordCount`, displayed as `Math.ceil(currentHp) / baseHP`
+  - Neon HP bar renders with shimmer animation
+  - Keyboard fills slots, correct/incorrect feedback works
+  - Streak counter increments on correct, resets on incorrect
+  - Crystal counter persists across pages via localStorage
   - Spell Helper shows input, breakdown area, letter chips
   - Navigation between all three pages works
-  - Crystal counter persists across pages via localStorage
-  - Correct/incorrect spelling feedback triggers properly
   - No JavaScript console errors on any page
+  - Graceful fallback if `enemies.json` fails to load
 
 ## Prioritized Backlog
 
