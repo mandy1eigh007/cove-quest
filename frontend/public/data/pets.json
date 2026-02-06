@@ -1,0 +1,37 @@
+[
+  {
+    "id": "pet_pebble",
+    "name": "Pebble",
+    "type": "Stone Sprite",
+    "unlockCondition": "Complete World 1 with zero mistakes in a single run.",
+    "bonus": "Hints appear slightly sooner."
+  },
+  {
+    "id": "pet_flicker",
+    "name": "Flicker",
+    "type": "Spark Fox",
+    "unlockCondition": "Earn 100 crystals total.",
+    "bonus": "+1 bonus crystal per battle."
+  },
+  {
+    "id": "pet_ripple",
+    "name": "Ripple",
+    "type": "Echo Frog",
+    "unlockCondition": "Use the Spell Helper 20 times.",
+    "bonus": "Letters glow when you hover near the right one."
+  },
+  {
+    "id": "pet_drift",
+    "name": "Drift",
+    "type": "Cloud Jellyfish",
+    "unlockCondition": "Achieve a 10-word streak.",
+    "bonus": "Slower enemy HP regen in future phases."
+  },
+  {
+    "id": "pet_ember",
+    "name": "Ember",
+    "type": "Flame Moth",
+    "unlockCondition": "Complete World 1 three times.",
+    "bonus": "Victory animation plays with fireworks."
+  }
+]
