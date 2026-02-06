@@ -5,7 +5,12 @@
 
 import { W1_WORDS } from "./data_w1_words.js";
 import { speakWord, speakLettersSlow } from "./speechHelpers.js";
-import { addCrystals, initCrystalDisplay } from "./hub.js";
+import { addCrystals, initCrystalDisplay, renderPetSlot } from "./hub.js";
+
+// --- Level mode detection ---
+const selectedLevel = Number(localStorage.getItem("w1_selected_level")) || 0;
+const isLevelMode = selectedLevel > 0;
+const isBossLevel = selectedLevel === 21;
 
 // DOM refs
 const enemyNameEl = document.querySelector("[data-enemy-name]");
