@@ -60,16 +60,19 @@ Audio via the browser Web Speech API. Persistence via localStorage only.
 | World 1 word data | `js/data_w1_words.js` |
 | Crystal counter utilities | `js/hub.js` |
 | Shared styles | `styles.css` |
+| Data stubs (enemies, worlds, avatars, pets) | `data/*.json` |
 | Project documentation | `/docs/` |
 
 ### Technical Details
 
 - **1 world only:** World 1, short-vowel CVC words
 - **20 CVC words** sourced from the existing word bank
-- **One quest battle loop** per session (all 20 words)
+- **One quest battle loop** per session (all 20 words, random enemy from `data/enemies.json`)
 - **One Spell Helper** for any word
 - **localStorage** crystal counter (no server, no accounts)
 - **Web Speech API** for text-to-speech (en-US preferred, graceful fallback)
+- **Streak counter** tracks consecutive correct answers per battle run
+- **Hero panel** with avatar placeholder ("Lyric"), pet slot locked for Phase 1.5
 
 ---
 
