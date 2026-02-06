@@ -147,6 +147,16 @@ function showVictory() {
     <div class="victory-panel">
       <div class="victory-title" data-testid="victory-title">You Won!</div>
       <div class="victory-subtitle">All words cleared. +5 bonus crystals earned.</div>
+      <div class="victory-stats">
+        <div class="victory-stat">
+          <div class="victory-stat-value" data-testid="victory-best-streak">${bestStreak}</div>
+          <div class="victory-stat-label">Best Streak</div>
+        </div>
+        <div class="victory-stat">
+          <div class="victory-stat-value" data-testid="victory-crystals">${queue.length + 5}</div>
+          <div class="victory-stat-label">Crystals Earned</div>
+        </div>
+      </div>
       <div class="victory-buttons">
         <button class="btn btn-sm btn-primary" data-testid="play-again-btn" type="button" id="victory-replay">Play Again</button>
         <button class="btn btn-sm" data-testid="victory-hub-btn" type="button" onclick="window.location.href='./hub.html'">Back to Hub</button>
