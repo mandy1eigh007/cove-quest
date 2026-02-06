@@ -99,11 +99,16 @@ function checkAnswer() {
   if (guess === target) {
     enemyHp -= 1;
     updateHpBar();
+    streak += 1;
+    bestStreak = Math.max(bestStreak, streak);
+    updateStreakDisplay();
     addCrystals(1);
     initCrystalDisplay();
     setFeedback("Nice. That hit the glitch.", "success");
     setTimeout(nextWord, 600);
   } else {
+    streak = 0;
+    updateStreakDisplay();
     setFeedback("Not quite. Try that word again.", "error");
     typed = [];
     renderSlots();
