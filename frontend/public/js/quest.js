@@ -245,10 +245,20 @@ function attachControlHandlers() {
 
 // --- Init ---
 
-function startBattle() {
+async function startBattle() {
+  const enemies = await loadEnemies();
+  const enemy = pickRandom(enemies);
+
+  // Update enemy UI
+  if (enemyNameEl) enemyNameEl.textContent = enemy.name || "Echo Glitch";
+  if (enemyTypeEl) enemyTypeEl.textContent = enemy.type || "Glitch Spirit";
+
+  const baseHP = Number(enemy.baseHP) || 20;
+
   queue = shuffle(W1_WORDS);
-  totalHp = queue.length;
-  enemyHp = totalHp;
+  totalHp = baseHP;
+  enemyHp = baseHP;
+  damagePerWord = baseHP / queue.length;
   currentIndex = 0;
   currentWord = "";
   typed = [];
