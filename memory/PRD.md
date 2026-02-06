@@ -53,14 +53,18 @@ Build Phase 1 Bootstrap MVP for SpellQuest: Cove. Game pages are vanilla HTML/CS
 - PWA manifest + service worker for offline play
 - Sound effects for correct/incorrect answers (beyond TTS)
 - Visual animations for HP damage and crystal rewards
+- Wire data stubs (`/data/*.json`) into gameplay when ready for multi-enemy/multi-world
 
 ### P2 (Nice to have)
 - Simplified keyboard layout option for younger kids
 - Word difficulty tracking (which words are most often misspelled)
 - Session stats (words correct, time taken)
+- Avatar selection (Lyric/Chord/Melody from avatars.json)
+- Pet unlock system (from pets.json conditions)
 
 ## Next Tasks
 1. Test with real children (ages 4–7) for usability feedback
 2. Add PWA install flow when ready
-3. Consider adding visual reward animations for correct spellings
-4. Plan World 2 (long-vowel CVCe words) based on Phase 1 learnings
+3. Wire enemies.json to randomize quest enemy per battle
+4. Consider adding visual reward animations for correct spellings
+5. Plan World 2 (long-vowel CVCe words) based on Phase 1 learnings
