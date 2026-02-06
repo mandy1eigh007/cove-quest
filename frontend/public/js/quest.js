@@ -8,6 +8,8 @@ import { speakWord, speakLettersSlow } from "./speechHelpers.js";
 import { addCrystals, initCrystalDisplay } from "./hub.js";
 
 // DOM refs
+const enemyNameEl = document.querySelector("[data-enemy-name]");
+const enemyTypeEl = document.querySelector("[data-enemy-type]");
 const statusEl = document.querySelector("[data-quest-status]");
 const hpFillEl = document.querySelector("[data-enemy-hp-fill]");
 const hpTextEl = document.querySelector("[data-hp-text]");
@@ -27,9 +29,30 @@ let currentWord = "";
 let typed = [];
 let totalHp = 0;
 let enemyHp = 0;
+let damagePerWord = 1;
 let battleDone = false;
 let streak = 0;
 let bestStreak = 0;
+
+// --- Enemy loading ---
+
+async function loadEnemies() {
+  try {
+    const res = await fetch("./data/enemies.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("bad response");
+    const enemies = await res.json();
+    if (!Array.isArray(enemies) || enemies.length === 0) throw new Error("empty");
+    return enemies;
+  } catch {
+    return [
+      { id: "fallback", name: "Echo Glitch", type: "Glitch Spirit", baseHP: 20 }
+    ];
+  }
+}
+
+function pickRandom(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 // --- Helpers ---
 
