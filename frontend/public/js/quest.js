@@ -106,6 +106,54 @@ function renderSlots() {
   });
 }
 
+// --- VFX ---
+
+function triggerHitVFX() {
+  const card = document.querySelector(".quest-enemy-card");
+  if (!card) return;
+  card.classList.remove("vfx-hit");
+  void card.offsetWidth;
+  card.classList.add("vfx-hit");
+  spawnParticles(card);
+}
+
+function triggerShakeVFX() {
+  if (!slotsContainer) return;
+  slotsContainer.classList.remove("vfx-shake");
+  void slotsContainer.offsetWidth;
+  slotsContainer.classList.add("vfx-shake");
+
+  const shell = document.querySelector(".quest-enemy-card");
+  if (shell) {
+    shell.classList.remove("vfx-flash-red");
+    void shell.offsetWidth;
+    shell.classList.add("vfx-flash-red");
+  }
+}
+
+function spawnParticles(anchor) {
+  const rect = anchor.getBoundingClientRect();
+  const container = document.createElement("div");
+  container.className = "vfx-particles";
+  container.style.position = "fixed";
+  container.style.left = (rect.left + rect.width / 2) + "px";
+  container.style.top = (rect.top + rect.height / 3) + "px";
+
+  const colors = ["#38bdf8", "#818cf8", "#c084fc", "#4ade80", "#fbbf24"];
+  for (let i = 0; i < 8; i++) {
+    const p = document.createElement("div");
+    p.className = "vfx-particle";
+    const angle = (Math.PI * 2 / 8) * i + Math.random() * 0.5;
+    const dist = 25 + Math.random() * 35;
+    p.style.setProperty("--px", Math.cos(angle) * dist + "px");
+    p.style.setProperty("--py", Math.sin(angle) * dist + "px");
+    p.style.background = colors[i % colors.length];
+    container.appendChild(p);
+  }
+  document.body.appendChild(container);
+  setTimeout(() => container.remove(), 650);
+}
+
 // --- Core loop ---
 
 function onKeyPress(letter) {
