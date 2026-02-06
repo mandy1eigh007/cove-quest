@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SpellQuest: Cove — World Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./js/map.js"></script>
+  </head>
+  <body>
+    <div class="map-shell">
+      <header class="map-header">
+        <div class="app-title-block">
+          <div class="app-title" data-testid="map-title">Echo Harbor</div>
+          <div class="app-subtitle">World 1 &mdash; Short Vowel CVC</div>
+        </div>
+        <div class="map-header-right">
+          <div class="app-crystals" data-testid="map-crystal-display">
+            <div class="app-crystals-label">Crystals</div>
+            <div class="app-crystals-value" data-crystal-count data-testid="map-crystal-count">0</div>
+          </div>
+        </div>
+      </header>
+
+      <div class="map-content">
+        <aside class="map-sidebar card" data-testid="map-sidebar">
+          <div class="hero-avatar" data-testid="map-avatar">
+            <svg viewBox="0 0 64 64" width="40" height="40" fill="none">
+              <circle cx="32" cy="22" r="11" fill="rgba(56,189,248,0.4)"/>
+              <ellipse cx="32" cy="50" rx="17" ry="11" fill="rgba(56,189,248,0.25)"/>
+            </svg>
+          </div>
+          <div class="hero-name" data-testid="map-hero-name">Lyric</div>
+          <div class="pet-slot-visual" data-pet-slot data-testid="map-pet-slot"></div>
+
+          <div class="map-sidebar-links">
+            <button class="btn btn-sm" type="button" data-testid="map-to-hub-btn"
+              onclick="window.location.href='./hub.html'">Hub</button>
+            <button class="btn btn-sm" type="button" data-testid="map-to-helper-btn"
+              onclick="window.location.href='./spellhelper.html'">Spell Helper</button>
+          </div>
+        </aside>
+
+        <div class="map-area" data-testid="map-area">
+          <svg class="map-path-svg" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+          <div class="map-nodes" data-map-nodes></div>
+          <div class="map-level-toast" data-map-toast data-testid="map-toast">Tap a glowing node to begin</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
