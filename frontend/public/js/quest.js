@@ -219,13 +219,32 @@ function showVictory() {
   if (statusEl) statusEl.textContent = "Battle cleared!";
   if (progressLabel) progressLabel.textContent = "Battle complete";
 
+  // Level completion bookkeeping
+  if (isLevelMode) {
+    try {
+      const completed = JSON.parse(localStorage.getItem("w1_completed_levels") || "[]");
+      if (!completed.includes(selectedLevel)) {
+        completed.push(selectedLevel);
+        localStorage.setItem("w1_completed_levels", JSON.stringify(completed));
+      }
+      const maxUnlocked = Number(localStorage.getItem("w1_unlocked_level")) || 1;
+      if (selectedLevel >= maxUnlocked && selectedLevel <= 20) {
+        localStorage.setItem("w1_unlocked_level", String(selectedLevel + 1));
+      }
+      localStorage.removeItem("w1_selected_level");
+    } catch {}
+  }
+
+  const backUrl = isLevelMode ? "./map.html" : "./hub.html";
+  const backLabel = isLevelMode ? "Back to Map" : "Back to Hub";
+
   const overlay = document.createElement("div");
   overlay.className = "victory-overlay";
   overlay.setAttribute("data-testid", "victory-overlay");
   overlay.innerHTML = `
     <div class="victory-panel">
       <div class="victory-title" data-testid="victory-title">You Won!</div>
-      <div class="victory-subtitle">All words cleared. +5 bonus crystals earned.</div>
+      <div class="victory-subtitle">${isBossLevel ? "Boss defeated!" : isLevelMode ? "Level cleared!" : "All words cleared."} +5 bonus crystals earned.</div>
       <div class="victory-stats">
         <div class="victory-stat">
           <div class="victory-stat-value" data-testid="victory-best-streak">${bestStreak}</div>
@@ -237,17 +256,25 @@ function showVictory() {
         </div>
       </div>
       <div class="victory-buttons">
-        <button class="btn btn-sm btn-primary" data-testid="play-again-btn" type="button" id="victory-replay">Play Again</button>
-        <button class="btn btn-sm" data-testid="victory-hub-btn" type="button" onclick="window.location.href='./hub.html'">Back to Hub</button>
+        ${isLevelMode
+          ? '<button class="btn btn-sm btn-primary" data-testid="continue-btn" type="button" id="victory-continue">Continue</button>'
+          : '<button class="btn btn-sm btn-primary" data-testid="play-again-btn" type="button" id="victory-replay">Play Again</button>'}
+        <button class="btn btn-sm" data-testid="victory-back-btn" type="button" onclick="window.location.href='${backUrl}'">${backLabel}</button>
       </div>
     </div>
   `;
   document.body.appendChild(overlay);
 
-  document.getElementById("victory-replay").addEventListener("click", () => {
-    overlay.remove();
-    startBattle();
-  });
+  if (isLevelMode) {
+    document.getElementById("victory-continue").addEventListener("click", () => {
+      window.location.href = "./map.html";
+    });
+  } else {
+    document.getElementById("victory-replay").addEventListener("click", () => {
+      overlay.remove();
+      startBattle();
+    });
+  }
 }
 
 // --- Keyboard ---
