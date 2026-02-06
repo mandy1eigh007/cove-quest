@@ -1,75 +1,87 @@
 # SpellQuest: Cove — PRD
 
 ## Original Problem Statement
-Build Phase 1 Bootstrap MVP for SpellQuest: Cove. Game pages are vanilla HTML/CSS/JS static files served from the React dev server's `public/` directory. The React app (`/app/frontend/src/App.js`) was modified to redirect `/` to `/hub.html`. No bundler or build step is used for the game files themselves.
+Build Phase 1 Bootstrap MVP for SpellQuest: Cove, then evolve to Phase 1.1 "2.5D Gamer Layer" with world map, level-based progression, enemy variety, battle VFX, and pet evolution. Game pages are vanilla HTML/CSS/JS static files served from the React dev server's `public/` directory. React `App.js` redirects `/` to `/map.html`.
 
 ## Architecture
-- **Stack:** Vanilla HTML5 + CSS3 + ES Module JavaScript (game pages). React dev server used only as static file host + redirect.
-- **Serving:** Static files in `/app/frontend/public/` served via React dev server (port 3000). `/app/frontend/src/App.js` redirects root `/` to `/hub.html`.
-- **Persistence:** localStorage only (key: `spellquest_cove_crystals`)
-- **Audio:** Web Speech API (browser TTS, en-US preferred)
+- **Stack:** Vanilla HTML5 + CSS3 + ES Module JavaScript. React dev server as static file host only.
+- **Serving:** Static files in `/app/frontend/public/` on port 3000. `App.js` redirects root `/` to `/map.html`.
+- **Persistence:** localStorage only (keys: `spellquest_cove_crystals`, `spellquest_pet_stage`, `w1_unlocked_level`, `w1_completed_levels`, `w1_selected_level`)
+- **Audio:** Web Speech API (browser TTS, en-US preferred, graceful fallback)
+- **Data:** Static JSON stubs in `/data/` (enemies, worlds, avatars, pets)
 - **No backend dependencies** for game logic
 
 ## User Personas
-1. **Early readers (ages 4–7):** Primary users. Large touch targets, no reading required for navigation, audio support.
-2. **Parents/teachers:** Secondary users. "For Adults" section explains what the MVP trains. They may type words in Spell Helper.
+1. **Early readers (ages 4-7):** Primary users. Large touch targets, no reading required for navigation, audio support.
+2. **Parents/teachers:** Secondary users. "For Adults" section explains what the MVP trains.
 
 ## Core Requirements (Static)
-- 1 world: short-vowel CVC words only
+- 1 world: short-vowel CVC words only (Echo Harbor)
 - 20 CVC words from existing word bank
-- Quest battle loop: spell words to damage enemy, earn crystals
+- Map-based level progression (20 levels + 1 boss)
+- Quest battle loop: spell word to defeat enemy, earn crystals
 - Spell Helper: type a word, see letter breakdown, hear it spoken
 - Crystal counter persists via localStorage
-- Graceful TTS fallback if Web Speech API unavailable
+- Pet evolution: locked -> egg (25 crystals) -> hatched "Pebble" (75 crystals)
 - No ads, no accounts, no loot boxes
 
 ## What's Been Implemented (Jan 2026)
-- [x] Project docs: `/docs/PHASE_1_BOOTSTRAP_MVP.md`, `/docs/ECOSYSTEM_VISION.md`, `/.github/copilot-instructions.md`
-- [x] Hub page (`/hub.html`) — title, crystal counter, avatar silhouette + pet slot, Quest + Spell Helper navigation
-- [x] Quest Battle (`/quest.html`) — 20 shuffled CVC words, QWERTY keyboard, neon HP bar, hero panel (avatar "Lyric", pet slot placeholder), streak counter, random enemy from `data/enemies.json` (Static Wisp, Echo Glitch, Vowel Shade, Scramble Imp, Hush Wraith), slots, feedback, victory screen with best streak
-- [x] Spell Helper (`/spellhelper.html`) — word input, letter chip breakdown, TTS integration
-- [x] `js/speechHelpers.js` — speakWord, speakLettersSlow, speakPhrase (Web Speech API)
-- [x] `js/data_w1_words.js` — 20 CVC words across all 5 short vowels
-- [x] `js/hub.js` — localStorage crystal counter shared across pages
-- [x] `styles.css` — dark theme, neon HUD, hero panel, kid-friendly large targets, responsive
-- [x] Data stubs: `/data/worlds.json`, `/data/enemies.json`, `/data/avatars.json`, `/data/pets.json`
-- [x] React `App.js` redirects `/` to `/hub.html` (only React file modified)
-- Manual smoke-check completed:
-  - Hub loads with crystal counter, avatar "Lyric", pet slot, and both navigation buttons
-  - Quest page loads random enemy from `data/enemies.json` (confirmed: Static Wisp, Echo Glitch, Vowel Shade, Scramble Imp, Hush Wraith all appear across refreshes)
-  - Enemy name, type ("Glitch Spirit"), and HP (20/20) display correctly
-  - HP bar uses `damagePerWord = baseHP / wordCount`, displayed as `Math.ceil(currentHp) / baseHP`
-  - Neon HP bar renders with shimmer animation
-  - Keyboard fills slots, correct/incorrect feedback works
-  - Streak counter increments on correct, resets on incorrect
-  - Crystal counter persists across pages via localStorage
-  - Spell Helper shows input, breakdown area, letter chips
-  - Navigation between all three pages works
-  - No JavaScript console errors on any page
-  - Graceful fallback if `enemies.json` fails to load
+
+### Phase 1 (Bootstrap MVP)
+- [x] Hub page with avatar, pet slot, crystal counter, navigation
+- [x] Quest Battle with 20 shuffled CVC words, QWERTY keyboard, HP bar, streak counter
+- [x] Spell Helper with word input, letter chip breakdown, TTS
+- [x] Web Speech API helpers (speakWord, speakLettersSlow, speakPhrase)
+- [x] localStorage crystal counter shared across pages
+- [x] Data stubs: worlds.json, enemies.json (5 enemies), avatars.json (3), pets.json (5)
+- [x] Project docs: PHASE_1_BOOTSTRAP_MVP.md, ECOSYSTEM_VISION.md, copilot-instructions.md
+
+### Phase 1.1 (2.5D Gamer Layer)
+- [x] World Map screen (map.html) with 21 nodes in winding S-curve path
+- [x] Level progression: locked/available/completed states, localStorage persistence
+- [x] Level-mode quest: 1 word per normal level, 5 words for boss level
+- [x] Deterministic enemy per level from enemies.json (4 levels per enemy)
+- [x] HP scaling: hp = baseHP + (level-1) * 2
+- [x] Battle VFX: enemy hit shake + particle burst (correct), red flash + slot shake (incorrect)
+- [x] Pet evolution system: locked (0), egg (25+ crystals), hatched Pebble (75+)
+- [x] Consistent hero/pet display across hub, map, and quest pages
+- [x] Map as main entry point (/ redirects to /map.html)
+- [x] Level completion flow: victory → localStorage update → map progression
+
+### Manual Smoke-Check
+- Map loads with 21 nodes, correct progression states
+- Level 1 quest: "Static Wisp", HP 20/20, word "cat", 1 word
+- Level 5 quest: "Echo Glitch", HP 28/28 (scaled), different word
+- Level completion updates map: checkmark on completed, next level available
+- Boss node (21) unlocks after level 20
+- VFX trigger correctly on correct/incorrect
+- Pet slot renders correctly per crystal threshold
+- Crystal persistence across hub/map/quest/spellhelper
+- Hub Quest Mode routes to map
+- Spell helper fully functional
+- No JavaScript console errors on any page
 
 ## Prioritized Backlog
 
-### P0 (Critical for Phase 1 completion)
-- Kid usability testing (weeks 5–8)
+### P0
+- Kid usability testing with real children (ages 4-7)
 - Touch target sizing validation on real mobile devices
 
-### P1 (Important)
+### P1
 - PWA manifest + service worker for offline play
-- Sound effects for correct/incorrect answers (beyond TTS)
-- Visual animations for HP damage and crystal rewards
-- Wire data stubs (`/data/*.json`) into gameplay when ready for multi-enemy/multi-world
-
-### P2 (Nice to have)
-- Simplified keyboard layout option for younger kids
-- Word difficulty tracking (which words are most often misspelled)
-- Session stats (words correct, time taken)
+- Sound effects (beyond TTS) for correct/incorrect
+- Boss battle with unique visual treatment
 - Avatar selection (Lyric/Chord/Melody from avatars.json)
-- Pet unlock system (from pets.json conditions)
+
+### P2
+- Wire pets.json unlock conditions into real gameplay
+- Word difficulty tracking
+- Session stats display
+- Simplified keyboard layout option
 
 ## Next Tasks
-1. Test with real children (ages 4–7) for usability feedback
-2. Add PWA install flow when ready
-3. Wire enemies.json to randomize quest enemy per battle
-4. Consider adding visual reward animations for correct spellings
-5. Plan World 2 (long-vowel CVCe words) based on Phase 1 learnings
+1. Test with real kids for usability feedback
+2. Add PWA install flow
+3. Build avatar selection screen
+4. Add boss battle unique visuals/dialogue
+5. Plan World 2 (long-vowel CVCe)
