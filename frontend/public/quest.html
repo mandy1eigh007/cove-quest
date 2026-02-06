@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SpellQuest: Cove — Quest Battle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./js/quest.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="app-title-block">
+          <div class="app-title">Quest Battle</div>
+          <div class="app-subtitle">
+            Spell CVC words to clear the glitch and earn crystals.
+          </div>
+        </div>
+        <div class="app-crystals" data-testid="crystal-display">
+          <div class="app-crystals-label">Crystals</div>
+          <div class="app-crystals-value" data-crystal-count data-testid="crystal-count">0</div>
+        </div>
+      </header>
+
+      <main class="quest-layout">
+        <section class="card quest-enemy-card">
+          <div class="card-header">
+            <div>
+              <div class="card-title quest-enemy-name" data-enemy-name data-testid="enemy-name">
+                Echo Glitch
+              </div>
+              <div class="card-subtitle quest-status" data-quest-status data-testid="quest-status">
+                Spell each word to hit the enemy.
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="quest-enemy-hp-bar" data-testid="enemy-hp-bar">
+              <div
+                class="quest-enemy-hp-fill"
+                data-enemy-hp-fill
+                data-testid="enemy-hp-fill"
+                style="width: 100%;"
+              ></div>
+            </div>
+
+            <div class="quest-word-slots" data-word-slots data-testid="word-slots"></div>
+
+            <div class="feedback-text" data-feedback data-testid="quest-feedback"></div>
+
+            <div class="quest-controls-row">
+              <button class="btn btn-sm btn-primary" type="button" data-btn-play-word data-testid="play-word-btn">
+                Play word
+              </button>
+              <button class="btn btn-sm" type="button" data-btn-spell-letters data-testid="spell-letters-btn">
+                Say letters
+              </button>
+              <button class="btn btn-sm" type="button" data-btn-clear data-testid="clear-btn">
+                Clear
+              </button>
+            </div>
+
+            <div class="quest-footer">
+              <span data-progress-label data-testid="progress-label">Word 1 of 20</span>
+              <button
+                class="btn btn-sm"
+                type="button"
+                data-testid="back-to-hub-btn"
+                onclick="window.location.href='./hub.html'"
+              >
+                Back to hub
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Letter Keyboard</div>
+              <div class="card-subtitle">
+                Kid taps letters; app handles everything else.
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="quest-keyboard" data-keyboard data-testid="quest-keyboard"></div>
+            <p class="text-muted">
+              The keyboard is fixed QWERTY for now. Later we can test
+              simplified layouts if needed, but this keeps it familiar for
+              adults coaching kids.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
