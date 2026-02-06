@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SpellQuest: Cove</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./js/hub.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="app-title-block">
+          <div class="app-title" data-testid="hub-title">SpellQuest: Cove</div>
+          <div class="app-subtitle">
+            World 1 &bull; Short Vowel CVC &bull; Echo Harbor
+          </div>
+          <div class="app-badge-row">
+            <span class="badge badge--accent">Phase 1 MVP</span>
+            <span class="badge">No reading required to navigate</span>
+          </div>
+        </div>
+        <div class="app-crystals" data-testid="crystal-display">
+          <div class="app-crystals-label">Crystals</div>
+          <div class="app-crystals-value" data-crystal-count data-testid="crystal-count">0</div>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Choose a Mode</div>
+              <div class="card-subtitle">
+                Kids tap a tile, app speaks what it does. No reading required.
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="button-grid">
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-testid="start-quest-btn"
+                onclick="window.location.href='./quest.html'"
+              >
+                <div class="btn-label">Quest Mode</div>
+                <div class="btn-main">Battle the Glitch</div>
+                <div class="text-muted">
+                  Spell CVC words to drain the enemy's HP and earn crystals.
+                </div>
+              </button>
+
+              <button
+                class="btn"
+                type="button"
+                data-testid="spell-helper-btn"
+                onclick="window.location.href='./spellhelper.html'"
+              >
+                <div class="btn-label">Spell Helper</div>
+                <div class="btn-main">"How do you spell...?"</div>
+                <div class="text-muted">
+                  Say or type a word, see it broken into letters, and hear it.
+                </div>
+              </button>
+            </div>
+            <p class="text-muted">
+              Sessions should be short: one battle or a few helper words at a
+              time. This keeps practice focused and repeatable.
+            </p>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">For Adults</div>
+              <div class="card-subtitle">
+                What this MVP is actually training.
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="text-muted" style="margin: 0; padding-left: 18px;">
+              <li>Short-vowel CVC decoding (cat, sun, bed, mop).</li>
+              <li>Letter-by-letter spelling with audio support.</li>
+              <li>Simple success/failure feedback without shame language.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Systematic phonics</span>
+              <span class="tag">Short sessions</span>
+              <span class="tag">Browser only</span>
+              <span class="tag">No ads</span>
+              <span class="tag">No accounts</span>
+              <span class="tag">No loot boxes</span>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
