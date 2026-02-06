@@ -243,19 +243,6 @@ body {
 
 /* Quest-specific */
 
-.quest-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: 14px;
-  flex: 1;
-}
-
-@media (max-width: 768px) {
-  .quest-layout {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
 .quest-enemy-card {
   position: relative;
   overflow: hidden;
