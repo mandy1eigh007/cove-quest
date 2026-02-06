@@ -23,12 +23,30 @@
       </header>
 
       <main class="quest-layout">
+        <!-- Hero Panel -->
+        <aside class="card hero-panel" data-testid="hero-panel">
+          <div class="hero-avatar" data-testid="hero-avatar">
+            <svg viewBox="0 0 64 64" width="48" height="48" fill="none">
+              <circle cx="32" cy="22" r="11" fill="rgba(56,189,248,0.4)"/>
+              <ellipse cx="32" cy="50" rx="17" ry="11" fill="rgba(56,189,248,0.25)"/>
+            </svg>
+          </div>
+          <div class="hero-name" data-testid="hero-name">Lyric</div>
+          <div class="hero-pet-slot" data-testid="pet-slot">Sidekick locked (Phase 1.5)</div>
+          <div class="hero-streak" data-testid="streak-display">
+            <div class="hero-streak-label">Streak</div>
+            <div class="hero-streak-value" data-streak-count data-testid="streak-count">0</div>
+          </div>
+        </aside>
+
+        <!-- Enemy / Spell Area -->
         <section class="card quest-enemy-card">
           <div class="card-header">
             <div>
               <div class="card-title quest-enemy-name" data-enemy-name data-testid="enemy-name">
                 Echo Glitch
               </div>
+              <div class="quest-enemy-type" data-testid="enemy-type">Glitch Spirit</div>
               <div class="card-subtitle quest-status" data-quest-status data-testid="quest-status">
                 Spell each word to hit the enemy.
               </div>
