@@ -156,6 +156,70 @@ function spawnParticles(anchor) {
   setTimeout(() => container.remove(), 650);
 }
 
+// --- Boss Intro Sequence ---
+
+function showBossIntro(enemyName) {
+  return new Promise(resolve => {
+    const overlay = document.createElement("div");
+    overlay.className = "boss-intro-overlay";
+    overlay.setAttribute("data-testid", "boss-intro-overlay");
+    overlay.innerHTML =
+      '<div class="boss-intro-glitch"></div>' +
+      '<div class="boss-intro-content">' +
+        '<div class="boss-intro-type">World 1 Boss</div>' +
+        '<div class="boss-intro-name" data-testid="boss-intro-name">' + enemyName + '</div>' +
+        '<div class="boss-intro-sub">Defeat the glitch to clear Echo Harbor</div>' +
+        '<div class="boss-intro-skip">tap to skip</div>' +
+      '</div>';
+
+    const dismiss = () => {
+      overlay.remove();
+      resolve();
+    };
+
+    overlay.addEventListener("click", dismiss);
+    document.body.appendChild(overlay);
+
+    // Auto-dismiss after 2.5s
+    setTimeout(dismiss, 2500);
+  });
+}
+
+// --- Rewards Pop ---
+
+function showRewardsPop(crystalsEarned, newBadges) {
+  return new Promise(resolve => {
+    const overlay = document.createElement("div");
+    overlay.className = "rewards-overlay";
+    overlay.setAttribute("data-testid", "rewards-overlay");
+
+    let badgeHtml = "";
+    if (newBadges.length > 0) {
+      const meta = getBadgeMeta(newBadges[0]);
+      badgeHtml =
+        '<div class="rewards-badge" style="border-color:' + meta.color + ';color:' + meta.color + '">' +
+          '<span style="font-size:1.2rem">' + meta.icon + '</span> ' + meta.name + ' unlocked!' +
+        '</div>';
+    }
+
+    overlay.innerHTML =
+      '<div class="rewards-panel">' +
+        '<div class="rewards-burst">&#10024;</div>' +
+        '<div class="rewards-title">Quest Complete!</div>' +
+        '<div class="rewards-crystals" data-testid="rewards-crystals">+' + crystalsEarned + ' Crystals</div>' +
+        badgeHtml +
+        '<button class="btn btn-sm cta-btn" type="button" data-testid="rewards-continue-btn" style="margin-top:8px">Continue</button>' +
+      '</div>';
+
+    overlay.querySelector("[data-testid='rewards-continue-btn']").addEventListener("click", () => {
+      overlay.remove();
+      resolve();
+    });
+
+    document.body.appendChild(overlay);
+  });
+}
+
 // --- Core loop ---
 
 function onKeyPress(letter) {
