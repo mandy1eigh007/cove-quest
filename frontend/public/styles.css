@@ -96,9 +96,9 @@ body {
 }
 
 .badge--accent {
-  border-color: rgba(56, 189, 248, 0.7);
+  border-color: rgba(0, 229, 255, 0.6);
   color: var(--accent);
-  background: radial-gradient(circle at top, rgba(56,189,248,0.12), transparent 60%);
+  background: radial-gradient(circle at top, rgba(0,229,255,0.12), transparent 60%);
 }
 
 .app-crystals {
