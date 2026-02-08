@@ -254,6 +254,7 @@ function checkAnswer() {
     streak = 0;
     updateStreakDisplay();
     triggerShakeVFX();
+    hadMistakes = true;
     setFeedback("Not quite. Try that word again.", "error");
     typed = [];
     renderSlots();
