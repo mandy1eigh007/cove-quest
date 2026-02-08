@@ -147,12 +147,13 @@ body {
 
 .card {
   border-radius: var(--border-radius-lg);
-  background: radial-gradient(circle at top left, rgba(15,23,42,0.9), #020617 65%);
-  border: 1px solid rgba(30, 64, 175, 0.7);
+  background: linear-gradient(145deg, rgba(26,10,62,0.8), rgba(13,2,33,0.9));
+  border: 1px solid rgba(168,85,247,0.3);
   padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03);
 }
 
 .card-header {
