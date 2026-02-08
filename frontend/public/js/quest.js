@@ -411,8 +411,8 @@ async function startBattle() {
     enemy = pickRandom(enemies);
   }
 
-  if (enemyNameEl) enemyNameEl.textContent = enemy.name || "Echo Glitch";
-  if (enemyTypeEl) enemyTypeEl.textContent = enemy.type || "Glitch Spirit";
+  if (enemyNameEl) enemyNameEl.textContent = isBossLevel ? "Glitchling Prime" : (enemy.name || "Echo Glitch");
+  if (enemyTypeEl) enemyTypeEl.textContent = isBossLevel ? "World 1 Boss" : (enemy.type || "Glitch Spirit");
 
   const baseHP = Number(enemy.baseHP) || 20;
 
