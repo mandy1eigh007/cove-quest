@@ -466,5 +466,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Boss intro sequence before battle
+  if (isBossLevel) {
+    await showBossIntro("Glitchling Prime");
+  }
+
   startBattle();
 });
