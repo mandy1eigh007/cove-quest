@@ -39,6 +39,7 @@ let damagePerWord = 1;
 let battleDone = false;
 let streak = 0;
 let bestStreak = 0;
+let hadMistakes = false;
 
 // --- Enemy loading ---
 
