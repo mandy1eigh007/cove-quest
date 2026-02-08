@@ -6,6 +6,7 @@
 import { W1_WORDS } from "./data_w1_words.js";
 import { speakWord, speakLettersSlow } from "./speechHelpers.js";
 import { addCrystals, initCrystalDisplay, renderPetSlot } from "./hub.js";
+import { incrementStat, updateStats, getStats, checkAchievements, getBadgeMeta } from "./achievements.js";
 
 // --- Level mode detection ---
 const selectedLevel = Number(localStorage.getItem("w1_selected_level")) || 0;
