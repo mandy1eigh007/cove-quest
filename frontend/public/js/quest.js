@@ -282,11 +282,11 @@ function nextWord() {
   currentIndex += 1;
 }
 
-function showVictory() {
+async function showVictory() {
   if (statusEl) statusEl.textContent = "Battle cleared!";
   if (progressLabel) progressLabel.textContent = "Battle complete";
+  const crystalsEarned = queue.length + 5;
 
-  // Level completion bookkeeping
   if (isLevelMode) {
     try {
       const completed = JSON.parse(localStorage.getItem("w1_completed_levels") || "[]");
@@ -298,49 +298,53 @@ function showVictory() {
       if (selectedLevel >= maxUnlocked && selectedLevel <= 20) {
         localStorage.setItem("w1_unlocked_level", String(selectedLevel + 1));
       }
+      sessionStorage.setItem("sq_just_completed", String(selectedLevel));
       localStorage.removeItem("w1_selected_level");
     } catch {}
   }
 
+  incrementStat("quests_completed");
+  const stats = getStats();
+  if (bestStreak > (stats.best_streak_ever || 0)) updateStats({ best_streak_ever: bestStreak });
+  if (isBossLevel) updateStats({ boss_defeated: true });
+  if (hadMistakes) updateStats({ finished_with_mistakes: true });
+  const newBadges = checkAchievements();
+
+  await showRewardsPop(crystalsEarned, newBadges);
+
   const backUrl = isLevelMode ? "./map.html" : "./hub.html";
   const backLabel = isLevelMode ? "Back to Map" : "Back to Hub";
-
   const overlay = document.createElement("div");
   overlay.className = "victory-overlay";
   overlay.setAttribute("data-testid", "victory-overlay");
   overlay.innerHTML = `
     <div class="victory-panel">
       <div class="victory-title" data-testid="victory-title">You Won!</div>
-      <div class="victory-subtitle">${isBossLevel ? "Boss defeated!" : isLevelMode ? "Level cleared!" : "All words cleared."} +5 bonus crystals earned.</div>
+      <div class="victory-subtitle">${isBossLevel ? "Boss defeated!" : isLevelMode ? "Level cleared!" : "All words cleared."}</div>
       <div class="victory-stats">
         <div class="victory-stat">
           <div class="victory-stat-value" data-testid="victory-best-streak">${bestStreak}</div>
           <div class="victory-stat-label">Best Streak</div>
         </div>
         <div class="victory-stat">
-          <div class="victory-stat-value" data-testid="victory-crystals">${queue.length + 5}</div>
-          <div class="victory-stat-label">Crystals Earned</div>
+          <div class="victory-stat-value" data-testid="victory-crystals" style="color:var(--gold)">${crystalsEarned}</div>
+          <div class="victory-stat-label">Crystals</div>
         </div>
       </div>
       <div class="victory-buttons">
         ${isLevelMode
-          ? '<button class="btn btn-sm btn-primary" data-testid="continue-btn" type="button" id="victory-continue">Continue</button>'
-          : '<button class="btn btn-sm btn-primary" data-testid="play-again-btn" type="button" id="victory-replay">Play Again</button>'}
-        <button class="btn btn-sm" data-testid="victory-back-btn" type="button" onclick="window.location.href='${backUrl}'">${backLabel}</button>
+          ? '<button class="btn btn-sm cta-btn" data-testid="continue-btn" type="button" id="victory-continue">Continue</button>'
+          : '<button class="btn btn-sm cta-btn" data-testid="play-again-btn" type="button" id="victory-replay">Play Again</button>'}
+        <button class="btn btn-sm" data-testid="victory-back-btn" type="button" id="victory-back">${backLabel}</button>
       </div>
     </div>
   `;
   document.body.appendChild(overlay);
-
+  document.getElementById("victory-back").addEventListener("click", () => { window.location.href = backUrl; });
   if (isLevelMode) {
-    document.getElementById("victory-continue").addEventListener("click", () => {
-      window.location.href = "./map.html";
-    });
+    document.getElementById("victory-continue").addEventListener("click", () => { window.location.href = "./map.html"; });
   } else {
-    document.getElementById("victory-replay").addEventListener("click", () => {
-      overlay.remove();
-      startBattle();
-    });
+    document.getElementById("victory-replay").addEventListener("click", () => { overlay.remove(); startBattle(); });
   }
 }
 
