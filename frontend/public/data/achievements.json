@@ -1,0 +1,50 @@
+[
+  {
+    "id": "first_quest",
+    "name": "First Steps",
+    "description": "Complete your first quest",
+    "icon": "star",
+    "color": "#fbbf24",
+    "condition": "quests_completed >= 1"
+  },
+  {
+    "id": "streak_3",
+    "name": "Hot Streak",
+    "description": "3 correct in a row",
+    "icon": "flame",
+    "color": "#f97316",
+    "condition": "best_streak >= 3"
+  },
+  {
+    "id": "streak_5",
+    "name": "On Fire",
+    "description": "5 correct in a row",
+    "icon": "flame",
+    "color": "#ef4444",
+    "condition": "best_streak >= 5"
+  },
+  {
+    "id": "streak_10",
+    "name": "Unstoppable",
+    "description": "10 correct in a row",
+    "icon": "bolt",
+    "color": "#a855f7",
+    "condition": "best_streak >= 10"
+  },
+  {
+    "id": "boss_clear",
+    "name": "Boss Slayer",
+    "description": "Defeat Glitchling Prime",
+    "icon": "shield",
+    "color": "#dc2626",
+    "condition": "boss_defeated === true"
+  },
+  {
+    "id": "resilience",
+    "name": "Never Give Up",
+    "description": "Finish a quest after making mistakes",
+    "icon": "heart",
+    "color": "#ec4899",
+    "condition": "finished_with_mistakes === true"
+  }
+]
