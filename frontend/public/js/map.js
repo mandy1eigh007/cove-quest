@@ -136,6 +136,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const unlocked = getUnlocked();
   const completed = getCompleted();
   const toast = document.querySelector("[data-map-toast]");
+  const cta = document.querySelector("[data-map-cta]");
+
   if (toast) {
     if (completed.length >= BOSS_LEVEL) {
       toast.textContent = "All levels complete! Replay any level.";
@@ -143,6 +145,22 @@ document.addEventListener("DOMContentLoaded", () => {
       toast.textContent = "Boss unlocked! Tap BOSS to start.";
     } else {
       toast.textContent = "Tap Level " + unlocked + " to continue";
+    }
+  }
+
+  // Wire CTA to next available level
+  if (cta) {
+    const nextLevel = completed.includes(BOSS_LEVEL) ? 1 : unlocked;
+    cta.addEventListener("click", () => startLevel(nextLevel));
+  }
+
+  // Unlock reveal: animate the newly unlocked node
+  const justCompleted = Number(sessionStorage.getItem("sq_just_completed")) || 0;
+  if (justCompleted > 0) {
+    sessionStorage.removeItem("sq_just_completed");
+    const nextNode = document.querySelector("[data-testid='map-node-" + (justCompleted + 1) + "']");
+    if (nextNode && !nextNode.classList.contains("map-node--locked")) {
+      nextNode.classList.add("map-node--reveal");
     }
   }
 });
