@@ -42,7 +42,7 @@ Minimum learning scope for v1
 - World 1 (CVC short vowels): early wins, fast feedback.
 - World 2 (blends): more challenge, still short words.
 - World 3 (digraphs): "sh/ch/th/wh/ph."
-- World 4 (long vowels & silent-e): pattern recognition.
+- World 4 (long vowels and silent-e): pattern recognition.
 - World 5 (multi-syllable starter): syllable chunking and common affixes.
 
 We will only claim learning outcomes after testing. The product is designed to support testing; it does not "promise" results by default.
