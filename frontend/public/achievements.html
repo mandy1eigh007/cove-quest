@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SpellQuest: Cove — Achievements</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./js/achievementsPage.js"></script>
+  </head>
+  <body>
+    <div class="app-shell ach-shell">
+      <header class="app-header">
+        <div class="app-title-block">
+          <div class="app-title" data-testid="ach-title">Achievements</div>
+          <div class="app-subtitle">Your badges and milestones</div>
+        </div>
+        <div class="app-crystals" data-testid="ach-crystal-display">
+          <div class="app-crystals-label">Crystals</div>
+          <div class="app-crystals-value" data-crystal-count data-testid="ach-crystal-count">0</div>
+        </div>
+      </header>
+      <main class="ach-grid" data-testid="ach-grid" data-ach-grid></main>
+      <footer style="padding: 10px; text-align: center;">
+        <button class="btn btn-sm cta-btn" type="button" data-testid="ach-back-btn"
+          onclick="window.location.href='./hub.html'">Back to Hub</button>
+      </footer>
+    </div>
+  </body>
+</html>
