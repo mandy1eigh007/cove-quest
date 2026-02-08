@@ -439,6 +439,7 @@ async function startBattle() {
   battleDone = false;
   streak = 0;
   bestStreak = 0;
+  hadMistakes = false;
   updateStreakDisplay();
   updateHpBar();
   nextWord();
