@@ -1,16 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cove Quest</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
 <body>
-<div id="bossOverlay" style="
-  position:fixed;
-  inset:0;
-  background:black;
-  color:white;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-  font-size:48px;
-  letter-spacing:3px;
-">
-  GLITCHLING PRIME
-</div>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="app-title">Quest</div>
+    <button data-testid="back-to-hub-btn">Back to Hub</button>
+    <!-- Optional Placeholder Containers -->
+    <div class="crystals-container"></div>
+    <div class="pet-container"></div>
+  </div>
+
+  <!-- Main Quest UI -->
+  <div class="quest-ui">
+    <div class="quest-enemy-card">
+      <div data-enemy-name>Enemy Name</div>
+      <div data-enemy-type>Enemy Type</div>
+      <div data-quest-status>Quest Status</div>
+      <div data-enemy-hp-fill>HP Fill</div>
+      <div data-hp-text>HP Text</div>
+    </div>
+    <div data-word-slots>Word Slots</div>
+    <div data-keyboard>Keyboard</div>
+    <button data-btn-play-word>Play Word</button>
+    <button data-btn-spell-letters>Spell Letters</button>
+    <button data-btn-clear>Clear</button>
+    <div data-progress-label>Progress</div>
+    <div data-feedback>Feedback</div>
+    <div data-streak-count>Streak Count</div>
+  </div>
+
+  <!-- Boss Intro Overlay -->
+  <div class="boss-intro-overlay">
+    <div class="boss-intro-glitch"></div>
+    <div class="boss-intro-content">
+      <div class="boss-intro-type">Boss Type</div>
+      <div class="boss-intro-name">Boss Name</div>
+      <div class="boss-intro-sub">Boss Subtitle</div>
+      <button class="boss-intro-skip">Skip</button>
+    </div>
+  </div>
+
+  <!-- Victory Overlay -->
+  <div class="victory-overlay">
+    <div class="victory-panel">
+      <div class="victory-title">Victory!</div>
+      <div class="victory-subtitle">Great Job!</div>
+      <div class="victory-best-streak">Best Streak</div>
+      <div class="victory-crystals">Crystals</div>
+      <button id="victory-continue">Continue</button>
+      <button id="victory-replay">Replay</button>
+      <button id="victory-back">Back</button>
+    </div>
+  </div>
+
+  <script src="./js/quest.js" type="module"></script>
 </body>
+</html>
