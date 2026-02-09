@@ -1,117 +1,16 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>SpellQuest: Cove — Quest Battle</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./styles.css" />
-    <script type="module" src="./js/quest.js"></script>
-  </head>
-  <body>
-    <div class="app-shell">
-      <header class="app-header">
-        <div class="app-title-block">
-          <div class="app-title">Quest Battle</div>
-          <div class="app-subtitle">
-            Spell CVC words to clear the glitch and earn crystals.
-          </div>
-        </div>
-        <div class="app-crystals" data-testid="crystal-display">
-          <div class="app-crystals-label">Crystals</div>
-          <div class="app-crystals-value" data-crystal-count data-testid="crystal-count">0</div>
-        </div>
-      </header>
-
-      <main class="quest-layout">
-        <!-- Hero Panel -->
-        <aside class="card hero-panel" data-testid="hero-panel">
-          <div class="hero-avatar" data-testid="hero-avatar">
-            <svg viewBox="0 0 64 64" width="48" height="48" fill="none">
-              <circle cx="32" cy="22" r="11" fill="rgba(56,189,248,0.4)"/>
-              <ellipse cx="32" cy="50" rx="17" ry="11" fill="rgba(56,189,248,0.25)"/>
-            </svg>
-          </div>
-          <div class="hero-name" data-testid="hero-name">Lyric</div>
-          <div class="pet-slot-visual" data-pet-slot data-testid="pet-slot"></div>
-          <div class="hero-streak" data-testid="streak-display">
-            <div class="hero-streak-label">Streak</div>
-            <div class="hero-streak-value" data-streak-count data-testid="streak-count">0</div>
-          </div>
-        </aside>
-
-        <!-- Enemy / Spell Area -->
-        <section class="card quest-enemy-card">
-          <div class="card-header">
-            <div>
-              <div class="card-title quest-enemy-name" data-enemy-name data-testid="enemy-name">
-                Echo Glitch
-              </div>
-              <div class="quest-enemy-type" data-enemy-type data-testid="enemy-type">Glitch Spirit</div>
-              <div class="card-subtitle quest-status" data-quest-status data-testid="quest-status">
-                Spell each word to hit the enemy.
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="quest-enemy-hp-bar" data-testid="enemy-hp-bar">
-              <div
-                class="quest-enemy-hp-fill"
-                data-enemy-hp-fill
-                data-testid="enemy-hp-fill"
-                style="width: 100%;"
-              ></div>
-            </div>
-            <div class="quest-hp-text" data-hp-text data-testid="hp-text">HP 20 / 20</div>
-
-            <div class="quest-word-slots" data-word-slots data-testid="word-slots"></div>
-
-            <div class="feedback-text" data-feedback data-testid="quest-feedback"></div>
-
-            <div class="quest-controls-row">
-              <button class="btn btn-sm btn-primary" type="button" data-btn-play-word data-testid="play-word-btn">
-                Play word
-              </button>
-              <button class="btn btn-sm" type="button" data-btn-spell-letters data-testid="spell-letters-btn">
-                Say letters
-              </button>
-              <button class="btn btn-sm" type="button" data-btn-clear data-testid="clear-btn">
-                Clear
-              </button>
-            </div>
-
-            <div class="quest-footer">
-              <span data-progress-label data-testid="progress-label">Word 1 of 20</span>
-              <button
-                class="btn btn-sm"
-                type="button"
-                data-testid="back-to-hub-btn"
-                onclick="window.location.href='./hub.html'"
-              >
-                Back to hub
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <section class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">Letter Keyboard</div>
-              <div class="card-subtitle">
-                Kid taps letters; app handles everything else.
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="quest-keyboard" data-keyboard data-testid="quest-keyboard"></div>
-            <p class="text-muted">
-              The keyboard is fixed QWERTY for now. Later we can test
-              simplified layouts if needed, but this keeps it familiar for
-              adults coaching kids.
-            </p>
-          </div>
-        </section>
-      </main>
-    </div>
-  </body>
-</html>
+<body>
+<div id="bossOverlay" style="
+  position:fixed;
+  inset:0;
+  background:black;
+  color:white;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  font-size:48px;
+  letter-spacing:3px;
+">
+  GLITCHLING PRIME
+</div>
+</body>
