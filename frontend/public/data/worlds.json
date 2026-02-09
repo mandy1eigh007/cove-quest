@@ -1,11 +1,5 @@
 [
-  {
-    "id": "w1",
-    "name": "Echo Harbor",
-    "subtitle": "City of Echoes",
-    "skillFocus": "CVC / short vowels",
-    "description": "Where sounds bounce off ancient walls and glitch spirits feed on misspelled words.",
-    "wordCount": 20,
-    "unlockCondition": "Available from start"
-  }
+  { "id": "cove",  "name": "Cove Reef",   "unlocked": true  },
+  { "id": "ember", "name": "Ember Marsh", "unlocked": false },
+  { "id": "sky",   "name": "Sky Canopy",  "unlocked": false }
 ]
